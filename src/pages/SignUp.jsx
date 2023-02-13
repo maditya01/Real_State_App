@@ -120,8 +120,8 @@ const SignUp = () => {
             <div className="my-4">
               <p className="text-center font-semibold">OR</p>
             </div>
+            <OAuth />
           </form>
-          <OAuth />
         </div>
       </div>
     </section>
