@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const ForgotPass = () => {
   const [email, setEmail] = useState("");
   function onInputChange(e) {
     setEmail(e.target.value);
+  }
+  async function onSubmit(e) {
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Email was sent");
+    } catch (error) {
+      toast.error("Something wrong happen");
+    }
   }
   return (
     <section>
@@ -19,7 +31,7 @@ const ForgotPass = () => {
           />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form>
+          <form onSubmit={onSubmit}>
             <input
               type="email"
               id="email"
@@ -50,8 +62,8 @@ const ForgotPass = () => {
             <div className="my-4">
               <p className="text-center font-semibold">OR</p>
             </div>
+            <OAuth />
           </form>
-          <OAuth />
         </div>
       </div>
     </section>
