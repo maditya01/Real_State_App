@@ -25,6 +25,7 @@ const Profile = () => {
   }
   async function onSubmit() {
     try {
+      console.log(name);
       if (auth.currentUser.displayName !== name) {
         //update display name in firebase auth.
         await updateProfile(auth.currentUser, {
@@ -45,7 +46,7 @@ const Profile = () => {
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
         <h1 className="text-3xl text-center font-bold mt-6">My Profile</h1>
         <div className="w-full md:w-[50%] mt-6 px-3">
-          <form onSubmit={onSubmit}>
+          <form>
             <input
               onChange={onChange}
               disabled={!changeDetail}
@@ -69,6 +70,7 @@ const Profile = () => {
                 Do you want to change name?
                 <span
                   onClick={() => {
+                    changeDetail && onSubmit(); //call onSubmit function when changeDetail is true.
                     setChangeDetail((prevS) => !prevS);
                   }}
                   className="text-red-600 hover:text-red-700 transition ease-in-out duration-200 ml-1 cursor-pointer "
