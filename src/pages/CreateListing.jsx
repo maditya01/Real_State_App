@@ -30,11 +30,11 @@ const CreateListing = () => {
   function onChange() {}
   return (
     <main className=" max-w-md m-auto px-2">
-      <h1 className="bg-green-600 text-3xl text-center mt-6 font-bold">
+      <h1 className=" text-3xl text-center mt-6 font-bold">
         Create a Listing
       </h1>
       <form className="">
-        <p className="bg-cyan-600 text-lg mt-6 font-semibold">Sell / Rent</p>
+        <p className=" text-lg mt-6 font-semibold">Sell / Rent</p>
         <div className="flex">
           <button
             type="button"
@@ -67,7 +67,7 @@ const CreateListing = () => {
             Rent
           </button>
         </div>
-        <p className="bg-cyan-600 text-lg mt-6 font-semibold">Name</p>
+        <p className=" text-lg mt-6 font-semibold">Name</p>
         <div>
           <input
             className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out 
@@ -84,7 +84,7 @@ const CreateListing = () => {
         </div>
         <div className="flex mb-6">
           <div>
-            <p className="bg-cyan-600 text-lg font-semibold">Beds</p>
+            <p className=" text-lg font-semibold">Beds</p>
             <input
               className="text-center mr-3 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out "
               type="number"
@@ -97,7 +97,7 @@ const CreateListing = () => {
             />
           </div>
           <div>
-            <p className="bg-cyan-600 text-lg  font-semibold">Baths</p>
+            <p className=" text-lg  font-semibold">Baths</p>
             <input
               className="text-center  ml-3 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out 
             focus:border-slate-600"
@@ -112,7 +112,7 @@ const CreateListing = () => {
           </div>
         </div>
         <div className="mb-6">
-          <p className="bg-cyan-600 text-lg font-semibold">Parking Spot</p>
+          <p className=" text-lg font-semibold">Parking Spot</p>
           <div className="flex">
             <button
               type="button"
@@ -139,7 +139,7 @@ const CreateListing = () => {
           </div>
         </div>
         <div className="mb-6">
-          <p className="bg-cyan-600 text-lg font-semibold">Furnished</p>
+          <p className=" text-lg font-semibold">Furnished</p>
           <div className="flex">
             <button
               type="button"
@@ -168,7 +168,7 @@ const CreateListing = () => {
           </div>
         </div>
         <div className="mb-6">
-          <p className="bg-cyan-600 text-lg font-semibold">Address</p>
+          <p className=" text-lg font-semibold">Address</p>
           <div>
             <textarea
               className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out 
@@ -183,7 +183,7 @@ const CreateListing = () => {
           </div>
         </div>
         <div className="mb-6">
-          <p className="bg-cyan-600 text-lg font-semibold">Description</p>
+          <p className=" text-lg font-semibold">Description</p>
           <div>
             <textarea
               className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out 
@@ -198,7 +198,7 @@ const CreateListing = () => {
           </div>
         </div>
         <div className="mb-6">
-          <p className="bg-cyan-600 text-lg font-semibold">Offer</p>
+          <p className=" text-lg font-semibold">Offer</p>
           <div className="flex">
             <button
               type="button"
@@ -225,7 +225,7 @@ const CreateListing = () => {
           </div>
         </div>
         <div className="mb-6">
-          <p className="bg-cyan-600 text-lg font-semibold">Regular Price</p>
+          <p className=" text-lg font-semibold">Regular Price</p>
           <div className="flex space-x-6">
             <input
               className="text-center mr-3 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out "
@@ -244,7 +244,7 @@ const CreateListing = () => {
         </div>
         {offer && (
           <div className="mb-6">
-            <p className="bg-cyan-600 text-lg font-semibold">
+            <p className=" text-lg font-semibold">
               Discounted Price
             </p>
             <div className="flex space-x-6">
@@ -265,7 +265,7 @@ const CreateListing = () => {
           </div>
         )}
         <div className="mb-6">
-          <p className="bg-cyan-600 text-lg  font-semibold">Images</p>
+          <p className=" text-lg  font-semibold">Images</p>
           <p className="text-gray-600">The first image will be cover (max 6)</p>
           <input
             className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out"
