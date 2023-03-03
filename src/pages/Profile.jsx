@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { getAuth, updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
-import { doc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import { FcHome } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import ListingItem from "../components/ListingItem";
 
 const Profile = () => {
   const [changeDetail, setChangeDetail] = useState(false);
+  const [listings, setListings] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const auth = getAuth();
   const [formData, setFormData] = useState({
@@ -44,6 +55,28 @@ const Profile = () => {
       toast.error("Could not apply changes");
     }
   }
+  //When Profile page is loaded we want to fetch all the listing from database
+  //We have to use useEffect here.
+  useEffect(() => {
+    async function fetchUserListing() {
+      const listingRef = collection(db, "listings");
+
+      const q = query(
+        listingRef,
+        where("userRef", "==", auth.currentUser.uid),
+        orderBy("timestamp", "desc")
+      );
+
+      const querySnap = await getDocs(q);
+      let listings = [];
+      querySnap.forEach((doc) => {
+        return listings.push({ id: doc.id, data: doc.data() });
+      });
+      setListings(listings);
+      setLoading(false);
+    }
+    fetchUserListing();
+  }, [auth.currentUser.uid]);
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
@@ -102,10 +135,25 @@ const Profile = () => {
               <FcHome className="mr-2 text-3xl bg-red-200 rounded-full p-1 border-2" />
               sell or rent your home
             </Link>
-            
           </button>
         </div>
       </section>
+      <div className="max-w-6xl bg-red-700 px-3 mt-6 mx-auto">
+        {!loading && listings.length > 0 && (
+          <>
+            <h2 className="text-2xl text-center font-semibold">My Listings</h2>
+            {listings.map((listing) => {
+              return (
+                <ListingItem
+                  key={listing.id}
+                  id={listing.id}
+                  data={listing.data}
+                />
+              );
+            })}
+          </>
+        )}
+      </div>
     </>
   );
 };
