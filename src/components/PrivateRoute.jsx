@@ -8,6 +8,7 @@ const PrivateRoute = () => {
   if (loading) {
     return <Spinner />;
   }
+  // Here understand what is the meaning of outlet component
   return loggedIn ? <Outlet /> : <Navigate to="/sign-in" />;
 };
 
