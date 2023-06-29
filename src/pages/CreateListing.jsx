@@ -148,7 +148,7 @@ const CreateListing = () => {
       geolocation,
       timestamp: serverTimestamp(),
       //Add a particular user who creates a listing
-      userRef: auth.currentUser.uid,
+      userRef: auth.currentUser.uid, 
     };
 
     delete formDataCopy.images;
