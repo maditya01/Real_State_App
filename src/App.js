@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import CreateListing from "./pages/CreateListing";
+import EditListing from "./pages/EditListing";
 
 function App() {
   return (
@@ -28,7 +29,13 @@ function App() {
           <Route path="/create-listing" element={<PrivateRoute />}>
             <Route path="/create-listing" element={<CreateListing />}></Route>
           </Route>
-        </Routes> 
+          <Route path="/edit-listing" element={<PrivateRoute />}>
+            <Route
+              path="/edit-listing/:listingId"
+              element={<EditListing />}
+            ></Route>
+          </Route>
+        </Routes>
       </Router>
       <ToastContainer
         position="top-center"
